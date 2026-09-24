@@ -27,20 +27,20 @@ export default function SearchBar({ cities, initial }: { cities: string[]; initi
 
   return (
     <form onSubmit={submit} role="search"
-      className="mx-auto grid max-w-5xl gap-3 rounded-xl border border-line bg-white py-5 px-8 shadow-[0_20px_60px_-20px_rgba(18,53,47,.35)] md:grid-cols-[1.2fr_1.3fr_1fr_auto] md:items-end">
+      className="mx-auto grid max-w-5xl gap-3 rounded-full border border-line bg-white py-5 px-8 shadow-[0_20px_60px_-20px_rgba(18,53,47,.35)] md:grid-cols-[1.2fr_1.3fr_1fr_auto] md:items-end">
       <div>
         <label htmlFor="where" className="label">Where</label>
-        <div className="flex items-center gap-2 rounded-xl border-[1.5px] border-line px-3.5 focus-within:border-lake">
+        <div className="flex items-center gap-2 rounded-full border-[1.5px] border-line px-3.5 focus-within:border-lake">
           <MapPin size={17} className="text-stone" />
           <input id="where" list="cities" value={city} onChange={(e) => setCity(e.target.value)}
-            placeholder="City or villa name" className="w-full bg-transparent py-[0.7rem] text-[0.95rem] outline-none" />
+            placeholder="City or villa name" className="w-full rounded-full bg-transparent py-[0.7rem] text-[0.95rem] outline-none" />
           <datalist id="cities">{cities.map((c) => <option key={c} value={c} />)}</datalist>
         </div>
       </div>
       <DateRangeField value={range} onChange={setRange} label="Check-in and check-out" />
       <div>
         <span className="label">Guests</span>
-        <div className="flex items-center justify-between rounded-xl border-[1.5px] border-line px-3.5 py-[0.45rem]">
+        <div className="flex items-center justify-between rounded-full border-[1.5px] border-line px-3.5 py-[0.45rem]">
           <Users size={17} className="text-stone" />
           <button type="button" aria-label="Fewer guests" onClick={() => setGuests((g) => Math.max(1, g - 1))}
             className="flex size-8 items-center justify-center rounded-full border border-line hover:bg-mist"><Minus size={14} /></button>

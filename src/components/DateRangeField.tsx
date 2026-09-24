@@ -74,7 +74,7 @@ export default function DateRangeField({ value, onChange, disabledRanges = [], c
   return (
     <div ref={ref} className={`relative ${className ?? ""}`}>
       <span className="label">{label}</span>
-      <button type="button" onClick={() => setOpen((o) => !o)} aria-expanded={open} className="flex w-full items-center gap-2 rounded-xl border-[1.5px] border-line bg-white px-3.5 py-[0.7rem] text-left text-[0.95rem] hover:border-lake">
+      <button type="button" onClick={() => setOpen((o) => !o)} aria-expanded={open} className="flex w-full items-center gap-2 rounded-full border-[1.5px] border-line bg-white px-3.5 py-[0.7rem] text-left text-[0.95rem] hover:border-lake">
         <CalendarDays size={17} className="text-stone" /><span className={value?.from ? "text-pine" : "text-stone"}>{text}</span>
       </button>
       {open && (

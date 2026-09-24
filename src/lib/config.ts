@@ -1,5 +1,5 @@
 export const site = {
-  name: "Vrindavan Holiday Inn",
+  name: "VHI",
   tagline: "Private villas and homestays, booked direct",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "919999999999",
