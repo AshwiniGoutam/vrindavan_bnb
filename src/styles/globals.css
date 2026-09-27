@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+/* ── VHI brand tokens (from the logo: ivory ground, black type, mono subline) ── */
+@theme {
+  --color-ivory: #f2efe8;
+  --color-paper: #f8f6f1;
+  --color-linen: #e8e2d7;
+  --color-sand: #d6ccbc;
+  --color-taupe: #9d8f7b;
+  --color-umber: #5c5245;
+  --color-muted: #6f685e;
+  --color-charcoal: #1d1c1a;
+  --color-ink: #0e0d0c;
+  --color-brass: #a4834e;
+  --color-success: #3f5a3a;
+  --color-danger: #8a3b2e;
+
+  /* --font-display: var(--font-instrument-serif), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, "SFMono-Regular", monospace; */
+
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+--font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+--font-mono: "DM Mono", ui-monospace, monospace;
+
+  --radius-xs: 2px;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  /* Tailwind v4 defaults borders to currentColor; VHI uses soft hairlines everywhere. */
+  *,
+  ::before,
+  ::after {
+    border-color: color-mix(in srgb, var(--color-charcoal) 14%, transparent);
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+  body {
+    /* background: var(--color-ivory); */
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+  }
+  ::selection {
+    background: var(--color-charcoal);
+    color: var(--color-ivory);
+  }
+  :focus-visible {
+    outline: 1.5px solid var(--color-charcoal);
+    outline-offset: 3px;
+  }
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .container-x {
+    width: 100%;
+    max-width: 1320px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-x {
+      padding-inline: 2.5rem;
+    }
+  }
+  .section {
+    padding-block: 5rem;
+  }
+  @media (min-width: 1024px) {
+    .section {
+      padding-block: 8rem;
+    }
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-umber);
+  }
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.02;
+  }
+  .accent {
+    font-family: var(--font-display);
+    font-style: italic;
+  }
+  .hairline {
+    border-color: color-mix(in srgb, var(--color-charcoal) 14%, transparent);
+  }
+  .prose-vhi p {
+    margin-bottom: 1.1em;
+    line-height: 1.8;
+  }
+  .prose-vhi h2 {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    margin: 2.2rem 0 0.8rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.95rem 1.6rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: var(--radius-xs);
+    transition: background-color 0.35s var(--ease-out-soft), color 0.35s var(--ease-out-soft), border-color 0.35s var(--ease-out-soft), transform 0.35s var(--ease-out-soft);
+    white-space: nowrap;
+  }
+  .btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  .btn-primary {
+    background: var(--color-charcoal);
+    color: var(--color-ivory);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--color-ink);
+  }
+  .btn-outline {
+    border: 1px solid var(--color-charcoal);
+    color: var(--color-charcoal);
+  }
+  .btn-outline:hover:not(:disabled) {
+    background: var(--color-charcoal);
+    color: var(--color-ivory);
+  }
+  .btn-light {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+  }
+  .btn-light:hover {
+    background: #fff;
+  }
+  .btn-ghost-light {
+    border: 1px solid rgb(242 239 232 / 0.55);
+    color: var(--color-ivory);
+  }
+  .btn-ghost-light:hover {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+  }
+  .link-line {
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition: background-size 0.45s var(--ease-out-soft);
+    padding-bottom: 2px;
+  }
+  .link-line:hover {
+    background-size: 100% 1px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .field-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  .input {
+    width: 100%;
+    background: var(--color-paper);
+    border: 1px solid color-mix(in srgb, var(--color-charcoal) 18%, transparent);
+    border-radius: var(--radius-xs);
+    padding: 0.8rem 0.9rem;
+    font-size: 0.95rem;
+    color: var(--color-charcoal);
+    transition: border-color 0.2s;
+  }
+  .input:focus {
+    outline: none;
+    border-color: var(--color-charcoal);
+  }
+  .input[aria-invalid="true"] {
+    border-color: var(--color-danger);
+  }
+
+  /* Placeholder frame when an image hasn't been uploaded yet — warm, textural, on-brand */
+  .photo-fallback {
+    background-color: var(--color-linen);
+    background-image: repeating-linear-gradient(135deg, transparent 0 22px, rgb(157 143 123 / 0.12) 22px 23px);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 1s var(--ease-out-soft), transform 1s var(--ease-out-soft);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  .img-zoom img {
+    transition: transform 1.4s var(--ease-out-soft);
+  }
+  .img-zoom:hover img {
+    transform: scale(1.04);
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+}
